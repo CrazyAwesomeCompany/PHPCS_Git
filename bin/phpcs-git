@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+curDir=$( (cd -P $(dirname $0) && pwd) )
+BIN_TARGET="$curDir/../vendor/bin/phpcs"
+
+# Get all files/paths that are changed
+fl=$(git ls-files -o --exclude-standard)
+
+files=""
+for i in $fl
+do
+    if [ -d $i ]
+    then
+        # Don't do directories
+        echo "Skipping directory $i"
+    else
+        if [ ${i##*.} == "php" ]
+        then
+            files="$files $i"
+        fi
+    fi
+done
+
+./vendor/bin/phpcs --standard=PSR2 $files

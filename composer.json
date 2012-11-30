@@ -1,0 +1,7 @@
+{
+    "name": "cac/phpcs-git",
+    "description": "PHPCS for changed files",
+    "require": {
+        "squizlabs/php_codesniffer": "1.4.2"
+    }
+}
