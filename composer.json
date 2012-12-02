@@ -1,10 +1,23 @@
 {
     "name": "cac/phpcs-git",
     "description": "PHPCS for changed files",
-    "bin": [
-        "bin/phpcs-git"
-    ],
+    "keywords": ["phpcs", "git", "standards"],
+    "homepage": "http://www.crazyawesomecompany.com",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/CrazyAwesomeCompany/PHPCS_Git/issues",
+        "source": "https://github.com/CrazyAwesomeCompany/PHPCS_Git"
+    },
     "require": {
         "squizlabs/php_codesniffer": "1.4.2"
-    }
+    },
+    "authors": [
+        {
+            "name": "Nick de Groot",
+            "email": "nick@crazyawesomecompany.com"
+        }
+    ],
+    "bin": [
+        "bin/phpcs-git"
+    ]
 }

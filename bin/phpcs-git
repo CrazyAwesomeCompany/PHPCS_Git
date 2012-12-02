@@ -1,10 +1,18 @@
 #!/usr/bin/env sh
 
 curDir=$( (cd -P $(dirname $0) && pwd) )
-BIN_TARGET="$curDir/../vendor/bin/phpcs"
+
+# Check where we are
+# TODO: This is dirty. Need some nice solution
+if [ -d "$curDir/../vendor/bin" ]
+then
+    BIN_DIR="$curDir/../vendor/bin"
+else
+    BIN_DIR="$curDir/../../../bin"
+fi
 
 # Get all files/paths that are changed
-fl=$(git ls-files -o --exclude-standard)
+fl=$(git ls-files -om --exclude-standard)
 
 files=""
 for i in $fl
@@ -21,4 +29,9 @@ do
     fi
 done
 
-./vendor/bin/phpcs --standard=PSR2 $files
+if [ -z "$files" ]
+then
+    echo "No files to check"
+else
+    $BIN_DIR/phpcs --standard=PSR2 $files
+fi
